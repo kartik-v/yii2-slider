@@ -48,12 +48,7 @@ class Slider extends \kartik\widgets\InputWidget
         parent::init();
         Html::addCssClass($this->options, 'form-control');
         // Initialize value
-        if (!empty($this->value)) {
-            $this->pluginOptions['value'] = $this->value;
-        }
-        else {
-            $this->pluginOptions['value'] = null;
-        }
+        $this->pluginOptions['value'] = (!empty($this->value)) ? $this->value : null;
         if (is_array($this->value)) {
             $this->value = implode(':', $this->value);
         }
