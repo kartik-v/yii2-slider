@@ -7,12 +7,13 @@
  */
 
 namespace kartik\slider;
+
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 /**
- * An extended slider input for Bootstrap 3 based 
- * on bootstrap-slider plugin. 
+ * An extended slider input for Bootstrap 3 based
+ * on bootstrap-slider plugin.
  *
  * @see https://github.com/seiyria/bootstrap-slider
  * @see http://www.eyecon.ro/bootstrap-slider/
@@ -27,7 +28,7 @@ class Slider extends \kartik\widgets\InputWidget
     const TYPE_SUCCESS = '#5cb85c';
     const TYPE_DANGER = '#d9534f';
     const TYPE_WARNING = '#f0ad4e';
-    
+
     /**
      * @var string background color for the slider handle
      */
@@ -37,33 +38,38 @@ class Slider extends \kartik\widgets\InputWidget
      * @var string background color for the slider selection
      */
     public $sliderColor;
-    
+
     /**
      * @var bool whether input is disabled
      */
     private $_isDisabled = false;
-    
+
     /**
      * Initializes the widget
      */
     public function init()
     {
         parent::init();
-        
+
         // initialize value
         $this->pluginOptions['value'] = (!empty($this->value)) ? $this->value : null;
         if (is_array($this->value)) {
             $this->value = implode(':', $this->value);
         }
-        
+
         Html::addCssClass($this->options, 'form-control');
         echo $this->getInput('textInput');
 
-        $this->_isDisabled = ((!empty($this->options['disabled']) && $this->options['disabled']) || 
+        // initialize if disabled
+        $this->_isDisabled = ((!empty($this->options['disabled']) && $this->options['disabled']) ||
             (!empty($this->options['readonly']) && $this->options['readonly']));
+        if ($this->_isDisabled) {
+            $this->pluginOptions['enabled'] = false;
+        }
+
         $this->registerAssets();
     }
-    
+
     /**
      * Registers the needed assets
      */
@@ -72,16 +78,11 @@ class Slider extends \kartik\widgets\InputWidget
         $view = $this->getView();
         SliderAsset::register($view);
 
-        // initialize if disabled
-        if ($this->_isDisabled) {
-            $this->pluginOptions['enabled'] = false;
-        }
-        
         // register plugin
         $id = "$('#" . $this->options['id'] . "')";
         $this->pluginOptions['id'] = $this->options['id'] . '-slider';
         $this->registerPlugin('slider');
-        
+
         // register CSS styles
         $cssStyle = null;
         if (!empty($this->handleColor) && !$this->_isDisabled) {
@@ -94,14 +95,19 @@ class Slider extends \kartik\widgets\InputWidget
         if ($cssStyle != null && !$this->_isDisabled) {
             $view->registerCss($cssStyle);
         }
-        
+
         // trigger change event on slider stop, so that client validation
         // is triggered for yii active fields
         $view->registerJs("{$id}.on('slideStop', function(){{$id}.trigger('change')});");
     }
-    
+
     /**
      * Gets the css background style for a slider element type
+     *
+     * @param string $type the element type ('handle' or 'selection')
+     * @param string $color the hex color string
+     * @param bool $isTriangle whether the handle displayed is of triangle shape.
+     * @return string
      */
     protected function getCssColor($type, $color, $isTriangle = false)
     {
