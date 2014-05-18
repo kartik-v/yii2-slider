@@ -41,7 +41,7 @@ to the ```require``` section of your `composer.json` file.
 
 ## Usage
 
-### DropdownX
+### Slider
 
 ```php
 use kartik\slider\Slider;
