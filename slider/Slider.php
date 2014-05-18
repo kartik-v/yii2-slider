@@ -66,9 +66,7 @@ class Slider extends \kartik\widgets\InputWidget
         $view = $this->getView();
         SliderAsset::register($view);
         $id = "$('#" . $this->options['id'] . "')";
-        
-        
-        
+
         // Initialize if disabled
         if ($this->_isDisabled) {
             $this->pluginOptions['enabled'] = false;
