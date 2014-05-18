@@ -7,9 +7,17 @@ of the bootstrap-slider by Stefan Petre from eyecon.ru. The slider input offers 
 - vertical or horizontal orientation of slider
 - setup your minimum and maximum values
 - setup your step increments
-- range selector 
+- range selector (multiple handles to control the range)
 - three shapes for handles
 - touch capablity and support for touch devices
+
+Additional enhancements added for this widget (by Krajee):
+
+- allows to configure slider selection and handle colors.
+- preselected styles to color your slider and handles.
+- automatically trigger change of base field on slider stop to enforce Yii ActiveField validation
+- automatically set plugin options based on base field value (parse array input value for range)
+- automatically disable slider based on disabled/readonly options.
 
 > NOTE: This extension depends on the [kartik-v/yii2-widgets](https://github.com/kartik-v/yii2-widgets) extension which in turn depends on the 
 [yiisoft/yii2-bootstrap](https://github.com/yiisoft/yii2/tree/master/extensions/bootstrap) extension. Check the 

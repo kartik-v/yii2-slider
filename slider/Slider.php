@@ -39,6 +39,9 @@ class Slider extends \kartik\widgets\InputWidget
         $view = $this->getView();
         SliderAsset::register($view);
         $id = "$('#" . $this->options['id'] . "')";
+        if (empty($this->pluginOptions['id'])) {
+            $this->pluginOptions['id'] = $id . '-slider';
+        }
         $this->registerPlugin('slider');
     }
 }

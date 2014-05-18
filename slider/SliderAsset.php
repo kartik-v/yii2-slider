@@ -6,7 +6,7 @@
  * @version 1.0.0
  */
 
-namespace kartik\slider;
+namespace kartik\slider;    
 
 /**
  * Slider bundle for \kartik\slider\Slider
@@ -14,7 +14,7 @@ namespace kartik\slider;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class DropdownXAsset extends \kartik\widgets\AssetBundle
+class SliderAsset extends \kartik\widgets\AssetBundle
 {
 
     public function init()
