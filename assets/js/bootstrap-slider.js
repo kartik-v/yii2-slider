@@ -39,8 +39,8 @@
 			this.picker = $('<div class="slider">'+
 								'<div class="slider-track">'+
 									'<div class="slider-selection"></div>'+
-									'<div class="slider-handle"></div>'+
-									'<div class="slider-handle"></div>'+
+									'<div class="slider-handle min-slider-handle"></div>'+
+									'<div class="slider-handle max-slider-handle"></div>'+
 								'</div>'+
 								'<div id="tooltip" class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'+
 								'<div id="tooltip_min" class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'+
@@ -156,15 +156,10 @@
 			this.handle2.removeClass('round triangle hide');
 		}
 
-		switch(this.handle) {
-			case 'round':
-				this.handle1.addClass('round');
-				this.handle2.addClass('round');
-				break;
-			case 'triangle':
-				this.handle1.addClass('triangle');
-				this.handle2.addClass('triangle');
-				break;
+		var availableHandleModifiers = ['round', 'triangle', 'custom'];
+		if (availableHandleModifiers.indexOf(this.handle) !== -1){
+			this.handle1.addClass(this.handle);
+			this.handle2.addClass(this.handle);
 		}
 
 		this.offset = this.picker.offset();
@@ -600,8 +595,8 @@
 						'type': 'slide',
 						'value': slideEventValue
 					})
-					.data('value', this.value)
-					.prop('value', this.value);
+					.data('value', slideEventValue)
+					.prop('value', slideEventValue);
 			}
 		},
 
