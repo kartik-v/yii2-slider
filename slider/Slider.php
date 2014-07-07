@@ -125,7 +125,7 @@ class Slider extends \kartik\widgets\InputWidget
 
         // trigger change event on slider stop, so that client validation
         // is triggered for yii active fields
-        $view->registerJs("{$id}.on('slideStop', function(){alert({$id}.val());{$id}.trigger('change')});");
+        $view->registerJs("{$id}.on('slideStop', function(){{$id}.trigger('change')});");
     }
 
     /**
