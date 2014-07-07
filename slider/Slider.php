@@ -8,6 +8,7 @@
 
 namespace kartik\slider;
 
+use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
@@ -51,10 +52,23 @@ class Slider extends \kartik\widgets\InputWidget
     {
         parent::init();
 
-        // initialize value
-        $this->pluginOptions['value'] = (!empty($this->value)) ? $this->value : null;
-        if (is_array($this->value)) {
-            $this->value = implode(':', $this->value);
+        if (!empty($this->value)) {
+            if (is_array($this->value)) {
+                throw new InvalidConfigException("Value cannot be passed as an array. If you wish to setup a range slider, pass the two values together as strings separated with a ',' sign.");
+            }
+            if (strpos($this->value, ',') > 0) {
+                $values = explode(',', $this->value);
+                static::validateValue($values[0]);
+                static::validateValue($values[1]);
+                $this->pluginOptions['value'] = [(float)$values[0], (float)$values[1]];
+                $this->pluginOptions['range'] = true;
+            } else {
+                static::validateValue($this->value);
+                $this->pluginOptions['value'] = (float)$this->value;
+            }
+        } else {
+            // initialize value
+            $this->pluginOptions['value'] = null;
         }
 
         Html::addCssClass($this->options, 'form-control');
@@ -68,6 +82,19 @@ class Slider extends \kartik\widgets\InputWidget
         }
 
         $this->registerAssets();
+    }
+
+    /**
+     * Validates the input value
+     *
+     * @param $value
+     * @throws \yii\base\InvalidConfigException
+     */
+    protected static function validateValue($value)
+    {
+        if (!is_numeric($value)) {
+            throw new InvalidConfigException("Invalid value '{$value}' passed. Only numeric values allowed.");
+        }
     }
 
     /**
@@ -98,7 +125,7 @@ class Slider extends \kartik\widgets\InputWidget
 
         // trigger change event on slider stop, so that client validation
         // is triggered for yii active fields
-        $view->registerJs("{$id}.on('slideStop', function(){{$id}.trigger('change')});");
+        $view->registerJs("{$id}.on('slideStop', function(){alert({$id}.val());{$id}.trigger('change')});");
     }
 
     /**
