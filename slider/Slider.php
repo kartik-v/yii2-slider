@@ -72,7 +72,6 @@ class Slider extends \kartik\widgets\InputWidget
         }
 
         Html::addCssClass($this->options, 'form-control');
-        echo $this->getInput('textInput');
 
         // initialize if disabled
         $this->_isDisabled = ((!empty($this->options['disabled']) && $this->options['disabled']) ||
@@ -82,6 +81,7 @@ class Slider extends \kartik\widgets\InputWidget
         }
 
         $this->registerAssets();
+        echo $this->getInput('textInput');
     }
 
     /**
