@@ -19,7 +19,7 @@ class SliderAsset extends \kartik\widgets\AssetBundle
 
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
+        $this->setSourcePath(__DIR__ . '/assets');
         $this->setupAssets('css', ['css/bootstrap-slider']);
         $this->setupAssets('js', ['js/bootstrap-slider']);
         parent::init();
