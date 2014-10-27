@@ -22,18 +22,18 @@ Additional enhancements added for this widget (by Krajee):
 > NOTE: This extension depends on the [kartik-v/yii2-widgets](https://github.com/kartik-v/yii2-widgets) extension which in turn depends on the 
 [yiisoft/yii2-bootstrap](https://github.com/yiisoft/yii2/tree/master/extensions/bootstrap) extension. Check the 
 [composer.json](https://github.com/kartik-v/yii2-slider/blob/master/composer.json) for this extension's requirements and dependencies. 
-Note: Yii 2 framework is still in active development, and until a fully stable Yii2 release, your core yii2-bootstrap packages (and its dependencies) 
-may be updated when you install or update this extension. You may need to lock your composer package versions for your specific app, and test 
-for extension break if you do not wish to auto update dependencies.
 
 ### Demo
 You can see detailed [documentation](http://demos.krajee.com/slider) on usage of the extension.
+
+## Latest Release
+>NOTE: The latest version of the module is v1.2.0 released on 25-Oct-2014. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-slider/blob/master/CHANGE.md) for details.
 
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-> Note: You must set the `minimum-stability` to `dev` in the **composer.json** file in your application root folder before installation of this extension.
+> Note: Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-stability-application/) on setting the `minimum-stability` settings for your application's composer.json.
 
 Either run
 
