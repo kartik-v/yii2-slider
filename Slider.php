@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-slider
- * @version 1.2.0
+ * @version 1.3.0
  */
 
 namespace kartik\slider;
@@ -21,7 +21,7 @@ use yii\helpers\ArrayHelper;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class Slider extends \kartik\widgets\InputWidget
+class Slider extends \kartik\base\InputWidget
 {
     const TYPE_GREY = '#bababa';
     const TYPE_PRIMARY = '#428bca';

@@ -1,3 +1,10 @@
+version 1.3.0
+=============
+**Date:** 10-Nov-2014
+
+- Set dependency on Krajee base components
+- Set release to stable
+
 version 1.2.0
 =============
 **Date:** 27-Oct-2014
