@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-slider
- * @version 1.3.0
+ * @version 1.4.0
  */
 
 namespace kartik\slider;
@@ -29,6 +29,11 @@ class Slider extends \kartik\base\InputWidget
     const TYPE_SUCCESS = '#5cb85c';
     const TYPE_DANGER = '#d9534f';
     const TYPE_WARNING = '#f0ad4e';
+
+    /**
+     * @inherit doc
+     */
+    protected $_pluginName = 'slider';
 
     /**
      * @var string background color for the slider handle
@@ -108,7 +113,7 @@ class Slider extends \kartik\base\InputWidget
         // register plugin
         $id = "$('#" . $this->options['id'] . "')";
         $this->pluginOptions['id'] = $this->options['id'] . '-slider';
-        $this->registerPlugin('slider');
+        $this->registerPlugin($this->_pluginName);
 
         // register CSS styles
         $cssStyle = null;
