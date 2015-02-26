@@ -30,9 +30,27 @@
  * v1.0.1
  * MIT license
  */
-( function( $ ) {
 
-	( function( $ ) {
+(function(root, factory) {
+	if(typeof define === "function" && define.amd) {
+		define(["jquery"], factory);
+	} else if(typeof module === "object" && module.exports) {
+		var jQuery;
+		try {
+			jQuery = require("jquery");
+		} catch (err) {
+			jQuery = null;
+		}
+		module.exports = factory(jQuery);
+	} else {
+		root.Slider = factory(root.jQuery);
+	}
+}(this, function($) {
+	// Reference to Slider constructor
+	var Slider;
+
+
+	(function( $ ) {
 
 		'use strict';
 
@@ -173,7 +191,7 @@
 
 	**************************************************/
 
-	(function( $ ) {
+	(function($) {
 
 		var ErrorMsgs = {
 			formatInvalidInputErrorMsg : function(input) {
@@ -189,7 +207,7 @@
 							CONSTRUCTOR
 
 		**************************************************/
-		var Slider = function(element, options) {
+		Slider = function(element, options) {
 			createNewSlider.call(this, element, options);
 			return this;
 		};
@@ -443,7 +461,7 @@
 			this.handle1Keydown = this._keydown.bind(this, 0);
 			this.handle1.addEventListener("keydown", this.handle1Keydown, false);
 
-			this.handle2Keydown = this._keydown.bind(this, 0);
+			this.handle2Keydown = this._keydown.bind(this, 1);
 			this.handle2.addEventListener("keydown", this.handle2Keydown, false);
 
 			if (this.touchCapable) {
@@ -1174,11 +1192,9 @@
 		if($) {
 			var namespace = $.fn.slider ? 'bootstrapSlider' : 'slider';
 			$.bridget(namespace, Slider);
-		} else {
-			window.Slider = Slider;
 		}
-
 
 	})( $ );
 
-})( window.jQuery );
+	return Slider;
+}));
