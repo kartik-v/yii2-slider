@@ -29,7 +29,7 @@ Additional enhancements added for this widget (by Krajee):
 You can see detailed [documentation](http://demos.krajee.com/slider) on usage of the extension.
 
 ## Latest Release
->NOTE: The latest version of the module is v1.4.0 released on 25-Oct-2014. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-slider/blob/master/CHANGE.md) for details.
+>NOTE: The latest version of the module is v1.3.1 released on 05-May-2015. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-slider/blob/master/CHANGE.md) for details.
 
 ## Installation
 

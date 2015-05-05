@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
  * @package yii2-slider
- * @version 1.4.0
+ * @version 1.3.1
  */
 
 namespace kartik\slider;
@@ -36,6 +36,13 @@ class Slider extends \kartik\base\InputWidget
     protected $_pluginName = 'slider';
 
     /**
+     * @var bool whether another conflicting Slider plugin like JUI slider exists on the
+     * same page. If set to `true` the plugin will use a different namespace. If you have 
+     * the full jQuery UI assets loaded on the page you should set this to `true`.
+     */
+    public $pluginConflict = false;
+
+    /**
      * @var string background color for the slider handle
      */
     public $handleColor;
@@ -56,6 +63,7 @@ class Slider extends \kartik\base\InputWidget
     public function init()
     {
         parent::init();
+        $this->_pluginName = $this->pluginConflict ? 'bootstrapSlider' : 'slider';
 
         if (!empty($this->value) || $this->value === 0) {
             if (is_array($this->value)) {

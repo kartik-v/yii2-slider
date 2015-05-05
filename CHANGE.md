@@ -1,10 +1,12 @@
-version 1.4.0
+version 1.3.1
 =============
-**Date:** 25-Nov-2014
+**Date:** 05-May-2015
 
 - (enh #6): Allow 0 to be a valid value
 - (enh #7): Enhance widget to use updated plugin registration from Krajee base
 - (enh #8): Upgrade plugin to latest release as of 25-Nov-2014.
+- (enh #12): New property `pluginConflict` to allow working with other slider plugins.
+- (enh #13): Upgrade plugin to latest release as of 05-May-2015.
 
 version 1.3.0
 =============
