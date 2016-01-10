@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
  * @package yii2-slider
  * @version 1.3.1
  */
@@ -10,18 +10,17 @@ namespace kartik\slider;
 
 use yii\base\InvalidConfigException;
 use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
+use kartik\base\InputWidget;
 
 /**
- * An extended slider input for Bootstrap 3 based
- * on bootstrap-slider plugin.
+ * An extended slider input for Bootstrap 3 based on bootstrap-slider plugin.
  *
  * @see https://github.com/seiyria/bootstrap-slider
  * @see http://www.eyecon.ro/bootstrap-slider/
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class Slider extends \kartik\base\InputWidget
+class Slider extends InputWidget
 {
     const TYPE_GREY = '#bababa';
     const TYPE_PRIMARY = '#428bca';
@@ -31,14 +30,14 @@ class Slider extends \kartik\base\InputWidget
     const TYPE_WARNING = '#f0ad4e';
 
     /**
-     * @inherit doc
+     * @inheritdoc
      */
-    protected $_pluginName = 'slider';
+    public $pluginName = 'slider';
 
     /**
-     * @var bool whether another conflicting Slider plugin like JUI slider exists on the
-     * same page. If set to `true` the plugin will use a different namespace. If you have 
-     * the full jQuery UI assets loaded on the page you should set this to `true`.
+     * @var bool whether another conflicting Slider plugin like JUI slider exists on the same page. If set to `true`
+     *     the plugin will use a different namespace. If you have the full jQuery UI assets loaded on the page you
+     *     should set this to `true`.
      */
     public $pluginConflict = false;
 
@@ -58,12 +57,12 @@ class Slider extends \kartik\base\InputWidget
     private $_isDisabled = false;
 
     /**
-     * Initializes the widget
+     * @inheritdoc
      */
-    public function init()
+    public function run()
     {
-        parent::init();
-        $this->_pluginName = $this->pluginConflict ? 'bootstrapSlider' : 'slider';
+        parent::run();
+        $this->pluginName = $this->pluginConflict ? 'bootstrapSlider' : 'slider';
 
         if (!empty($this->value) || $this->value === 0) {
             if (is_array($this->value)) {
@@ -88,7 +87,8 @@ class Slider extends \kartik\base\InputWidget
 
         // initialize if disabled
         $this->_isDisabled = ((!empty($this->options['disabled']) && $this->options['disabled']) ||
-            (!empty($this->options['readonly']) && $this->options['readonly']));
+            (!empty($this->options['readonly']) && $this->options['readonly'])) || (isset($this->disabled) &&
+                $this->disabled) || (isset($this->readonly) && $this->readonly);
         if ($this->_isDisabled) {
             $this->pluginOptions['enabled'] = false;
         }
@@ -101,6 +101,7 @@ class Slider extends \kartik\base\InputWidget
      * Validates the input value
      *
      * @param $value
+     *
      * @throws \yii\base\InvalidConfigException
      */
     protected static function validateValue($value)
@@ -121,8 +122,7 @@ class Slider extends \kartik\base\InputWidget
         // register plugin
         $id = "$('#" . $this->options['id'] . "')";
         $this->pluginOptions['id'] = $this->options['id'] . '-slider';
-        $this->registerPlugin($this->_pluginName);
-
+        $this->registerPlugin($this->pluginName);
         // register CSS styles
         $cssStyle = null;
         if (!empty($this->handleColor) && !$this->_isDisabled) {
@@ -146,7 +146,8 @@ class Slider extends \kartik\base\InputWidget
      *
      * @param string $type the element type ('handle' or 'selection')
      * @param string $color the hex color string
-     * @param bool $isTriangle whether the handle displayed is of triangle shape.
+     * @param bool   $isTriangle whether the handle displayed is of triangle shape.
+     *
      * @return string
      */
     protected function getCssColor($type, $color, $isTriangle = false)
