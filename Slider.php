@@ -64,7 +64,7 @@ class Slider extends InputWidget
         parent::run();
         $this->pluginName = $this->pluginConflict ? 'bootstrapSlider' : 'slider';
 
-        if (!empty($this->value) || $this->value === 0) {
+        if (!empty($this->value) || $this->value == 0) {
             if (is_array($this->value)) {
                 throw new InvalidConfigException("Value cannot be passed as an array. If you wish to setup a range slider, pass the two values together as strings separated with a ',' sign.");
             }
