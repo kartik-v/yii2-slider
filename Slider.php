@@ -52,6 +52,11 @@ class Slider extends InputWidget
     public $sliderColor;
 
     /**
+     * @var string initialize value for plugin (default = 5)
+     */
+    public $initializeValue;
+    
+    /**
      * @var bool whether input is disabled
      */
     private $_isDisabled = false;
@@ -80,7 +85,7 @@ class Slider extends InputWidget
             }
         } else {
             // initialize value
-            $this->pluginOptions['value'] = null;
+            $this->pluginOptions['value'] = isset($this->initializeValue) ? intval($this->initializeValue) : null;
         }
 
         Html::addCssClass($this->options, 'form-control');
