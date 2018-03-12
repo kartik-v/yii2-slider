@@ -703,7 +703,7 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 				step: 1,
 				precision: 0,
 				orientation: 'horizontal',
-				value: 5,
+				value: 0,
 				range: false,
 				selection: 'before',
 				tooltip: 'show',
