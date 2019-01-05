@@ -1,7 +1,18 @@
-yii2-slider
-=================
+<h1 align="center">
+    <a href="http://demos.krajee.com" title="Krajee Demos" target="_blank">
+        <img src="http://kartik-v.github.io/bootstrap-fileinput-samples/samples/krajee-logo-b.png" alt="Krajee Logo"/>
+    </a>
+    <br>
+    yii2-slider
+    <hr>
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DTP3NZQ6G2AYU"
+       title="Donate via Paypal" target="_blank">
+        <img src="http://kartik-v.github.io/bootstrap-fileinput-samples/samples/donate.png" alt="Donate"/>
+    </a>
+</h1>
 
-[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-slider/v/stable)](https://packagist.org/packages/kartik-v/yii2-slider)
+[![Stable Version](https://poser.pugx.org/kartik-v/yii2-slider/v/stable)](https://packagist.org/packages/kartik-v/yii2-slider)
+[![Unstable Version](https://poser.pugx.org/kartik-v/yii2-slider/v/unstable)](https://packagist.org/packages/kartik-v/yii2-slider)
 [![License](https://poser.pugx.org/kartik-v/yii2-slider/license)](https://packagist.org/packages/kartik-v/yii2-slider)
 [![Total Downloads](https://poser.pugx.org/kartik-v/yii2-slider/downloads)](https://packagist.org/packages/kartik-v/yii2-slider)
 [![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-slider/d/monthly)](https://packagist.org/packages/kartik-v/yii2-slider)
@@ -29,7 +40,7 @@ Additional enhancements added for this widget (by Krajee):
 You can see detailed [documentation](http://demos.krajee.com/slider) on usage of the extension.
 
 ## Latest Release
->NOTE: The latest version of the module is v1.3.1 released on 05-May-2015. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-slider/blob/master/CHANGE.md) for details.
+> Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-slider/blob/master/CHANGE.md) for details on updates to various releases.
 
 ## Installation
 
@@ -73,4 +84,4 @@ echo Slider::widget([
 
 ## License
 
-**yii2-slider** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
+**yii2-slider** is released under the BSD-3-Clause License. See the bundled `LICENSE.md` for details.

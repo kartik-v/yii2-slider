@@ -1,6 +1,15 @@
 Change Log: `yii2-slider`
 =========================
 
+## Version 1.3.3
+
+**Date:** 05-Jan-2019
+
+- Update to latest release of bootstrap-slider plugin
+- Update bootstrap-slider plugin default value to `0`.
+- Move all source code to `src` directory.
+- Update README.
+
 ## Version 1.3.2
 
 **Date:** 10-Jan-2016
