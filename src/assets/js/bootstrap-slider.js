@@ -1820,6 +1820,9 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
    	Source: http://stackoverflow.com/questions/10454518/javascript-how-to-retrieve-the-number-of-decimals-of-a-string-number
    */
 			_getPercentage: function _getPercentage(ev) {
+				if (ev.type === 'touchend') {
+					return this._state.percentage[this._state.dragged];
+				}
 				if (this.touchCapable && (ev.type === 'touchstart' || ev.type === 'touchmove')) {
 					ev = ev.touches[0];
 				}
