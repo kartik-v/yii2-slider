@@ -1497,7 +1497,8 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 					return false;
 				}
 
-				if (ev.preventDefault) {
+				if (ev.preventDefault && event.defaultPrevented) {
+					ev.returnValue = false;
 					ev.preventDefault();
 				}
 
@@ -1547,8 +1548,6 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 				this._trigger('slideStart', newValue);
 
 				this.setValue(newValue, false, true);
-
-				ev.returnValue = false;
 
 				if (this.options.focus) {
 					this._triggerFocusOnHandle(this._state.dragged);
